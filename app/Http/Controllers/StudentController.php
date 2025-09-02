@@ -29,5 +29,10 @@ class StudentController extends Controller
         ]);
 
         dd('data saved');
+    }
+    public function showData()
+    {
+        $students = DB::table('students')->get();
+        return view('studentList', ['students' => $students]);
     }   
 }
