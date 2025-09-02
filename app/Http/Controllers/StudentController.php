@@ -39,7 +39,17 @@ class StudentController extends Controller
     }
     public function showData()
     {
-        $students = DB::table('students')->get();
+        $students = DB::table('students')->where('student_name','John Doe')->get();
         return view('studentList', ['students' => $students]);
-    }   
+    }
+    
+    public function getCourse()
+    {
+        $result = DB::table('students')
+        ->join('courses', 'students.id', '=', 'courses.student_id')
+        ->select('students.id','students.student_name', 'courses.course_code', 'courses.course_title')
+        ->get();
+
+        dd($result);
+    }
 }
