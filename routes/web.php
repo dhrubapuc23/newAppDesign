@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,3 +40,5 @@ Route::view('/admin/home','admin.home');
 Route::view('/admin/feature1','admin.feature1');
 Route::resource('photo', PhotoController::class);
 
+Route::get('student',[StudentController::class, 'create'])->name('student.create');
+Route::post('student/store',[StudentController::class, 'store'])->name('student.store');
