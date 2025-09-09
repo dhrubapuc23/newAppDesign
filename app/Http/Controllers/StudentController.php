@@ -39,7 +39,7 @@ class StudentController extends Controller
     }
     public function showData()
     {
-        $students = DB::table('students')->where('student_name','John Doe')->get();
+        $students = DB::table('students')->paginate(15);
         return view('studentList', ['students' => $students]);
     }
     
@@ -51,5 +51,11 @@ class StudentController extends Controller
         ->get();
 
         dd($result);
+    }
+
+    public function edit($id)
+    {
+        $student = DB::table('students')->find($id);
+        return view('edit-student',['student'=>$student]);
     }
 }
