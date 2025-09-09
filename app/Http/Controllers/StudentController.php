@@ -94,4 +94,37 @@ class StudentController extends Controller
         }
         return view('searchstudentList', ['students' => $students]);
     }
+
+    public function fileUploadForm()
+    {
+        return view('file-upload');
+    }
+
+    public function fileUploadSubmit(Request $req)
+    {
+        $req->validate([
+            'file' => 'required|mimes:jpg,jpeg,png,gif,pdf,doc,docx|max:2048'
+        ]);
+        $file = $req->file('file');
+        $fileName = time().'_'.$file->getClientOriginalName();
+        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        DB::table('files')->insert([
+            'filepath' => $filePath
+        ]);
+        return back()->with('success','File has been uploaded.');
+
+        // if($req->file()) {
+        //     $fileName = time().'_'.$req->file->getClientOriginalName();
+        //     // $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+        //     $filePath = $req->file('file')->move(public_path('uploads'), $fileName);
+
+        //     // DB::table('files')->insert([
+        //     //     'filepath' => $filePath
+        //     // ]);
+
+        //     return back()
+        //         ->with('success','File has been uploaded.')
+        //         ->with('file', $fileName);
+        // }
+    }
 }
