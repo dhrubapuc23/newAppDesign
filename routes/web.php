@@ -47,3 +47,4 @@ Route::get('student/course',[StudentController::class, 'getCourse'])->name('stud
 Route::get('student/edit/{id}',[StudentController::class, 'edit'])->name('student.edit');
 Route::post('student/update/{id}',[StudentController::class, 'update'])->name('student.update');
 Route::get('student/delete/{id}',[StudentController::class, 'delete'])->name('student.delete');
+Route::post('student/search',[StudentController::class, 'search'])->name('student.search');

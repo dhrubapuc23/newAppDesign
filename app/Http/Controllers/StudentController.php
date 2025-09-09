@@ -75,4 +75,23 @@ class StudentController extends Controller
         DB::table('students')->where('id',$id)->delete();
         return redirect()->route('student.show')->with('success','Student info deleted successfully');
     }
+
+    public function search(Request $req)
+    {
+        $search = $req->search;
+        //dd($search);
+        $students = DB::table('students')
+            ->where('id',$search)
+            ->get();
+        // $students = DB::table('students')
+        //     ->where('id', 'like', "%{$search}%")
+        //     // ->orWhere('student_name', 'like', "%{$search}%")
+        //     // ->orWhere('email', 'like', "%{$search}%")
+        //     // ->orWhere('semester', 'like', "%{$search}%")
+        //     ->paginate(15);
+        if($students->isEmpty()){
+            return redirect()->route('student.show')->with('success','No data found');
+        }
+        return view('searchstudentList', ['students' => $students]);
+    }
 }

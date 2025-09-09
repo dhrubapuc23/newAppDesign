@@ -2,13 +2,6 @@
 @section('content')
         <div class="col">
             <h2>Student Record</h2>
-            <form action="{{route('student.search')}}" method="post">
-                @csrf
-                <div class="form-group">
-                  <input type="number" name="search" id="search" class="form-control" placeholder="search by student id" style="width: 20%">
-                </div>
-                <input type="submit" value="Search" class="btn btn-primary mb-2">
-            </form>
         @session('success')
             <div class="alert alert-success" role="alert">
                 {{session('success')}}
@@ -38,7 +31,7 @@
                 @endforeach
             </tbody>
         </table>
-        {!!$students->withQueryString()->links('pagination::bootstrap-4')!!}
+        {{-- {!!$students->withQueryString()->links('pagination::bootstrap-4')!!} --}}
     </div>
     <script>
         function confirmDelete(event) {
