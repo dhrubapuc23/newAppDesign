@@ -18,5 +18,23 @@
         </div>
         <input type="submit" value="upload" class="btn btn-primary mb-2">
     </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">File Path</th>
+                <th scope="col">File</th>
+            </tr>
+        <tbody>
+            @foreach ($results as $result)
+                <tr>
+                    <th scope="row">{{$result->id}}</th>
+                    <td>{{$result->filepath}}</td>
+                    {{-- <td><a href="{{asset($result->filepath)}}" target="_blank">View File</a></td> --}}
+                    <td><img src="{{asset($result->filepath)}}" alt="" srcset="" style="width: 100px;"></td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
     </div>
 @endsection
