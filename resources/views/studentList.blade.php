@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.app')
 @section('content')
         <div class="col">
             <h2>Student Record</h2>
