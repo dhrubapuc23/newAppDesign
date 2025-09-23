@@ -2,6 +2,7 @@
 @section('content')
         <div class="col">
             <h2>Student Record</h2>
+            <a href="{{route('get.pdf')}}" class="btn btn-info mb-2 mt-2" style="float: right;">Download</a>
             <form action="{{route('student.search')}}" method="post">
                 @csrf
                 <div class="form-group">

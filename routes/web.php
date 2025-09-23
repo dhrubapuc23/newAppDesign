@@ -53,3 +53,4 @@ Route::post('file/upload',[StudentController::class, 'fileUploadSubmit'])->name(
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('get-pdf',[StudentController::class, 'getPDF'])->name('get.pdf');
