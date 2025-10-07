@@ -141,7 +141,13 @@ class StudentController extends Controller
 
     public function sendEmail()
     {
-        Mail::to('abc@gmail.com')->send(new TestEmail());
+        Mail::to('mdtara0199@gmail.com')->send(new TestEmail());
         dd('Email sent');
+    }
+
+    public function showDataApi()
+    {
+        $students = DB::table('students')->get();
+        return response()->json($students);
     }
 }
