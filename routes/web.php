@@ -42,7 +42,7 @@ Route::resource('photo', PhotoController::class);
 
 Route::get('student',[StudentController::class, 'create'])->name('student.create');
 Route::post('student/store',[StudentController::class, 'store'])->name('student.store');
-Route::get('student/show',[StudentController::class, 'showData'])->name('student.show')->middleware('student.age');
+Route::get('student/show',[StudentController::class, 'showData'])->name('student.show')->middleware('student.age:21');
 Route::get('student/course',[StudentController::class, 'getCourse'])->name('student.course');
 Route::get('student/edit/{id}',[StudentController::class, 'edit'])->name('student.edit');
 Route::post('student/update/{id}',[StudentController::class, 'update'])->name('student.update');
@@ -54,3 +54,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('get-pdf',[StudentController::class, 'getPDF'])->name('get.pdf');
+Route::get('send-email',[StudentController::class, 'sendEmail'])->name('send.email');

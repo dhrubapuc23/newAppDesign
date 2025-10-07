@@ -13,9 +13,9 @@ class StudentMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $minAge): Response
     {
-        if($request->query('age')<18){
+        if($request->query('age') < $minAge){
             return response('You are not allowed to access this page',403);
             //return redirect('student')->with('error','You are not allowed to access this page');
         }
